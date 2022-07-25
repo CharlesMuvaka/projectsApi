@@ -12,6 +12,7 @@ public interface ProjectInterface {
     //READ
     Project getProjectById(int id);
     List<Project> getProjectByType(String type);
+    List<Project> getAllProjects();
 
     //Update
     void updateProject(int id, Project project);
