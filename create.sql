@@ -1,4 +1,5 @@
 CREATE DATABASE my_projects;
+\c my_projects
 
 CREATE TABLE projects(
 id serial PRIMARY KEY NOT NULL,
