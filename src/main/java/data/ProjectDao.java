@@ -37,7 +37,24 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public List<Project> getProjectByType(String type) {
-        return null;
+        String query = "SELECT * FROM my_projects WHERE type = :type";
+        try(Connection conn = DB.sql2o.open()){
+            return conn.createQuery(query)
+                    .addParameter("type", type)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Project.class);
+        }
+
+    }
+
+    @Override
+    public List<Project> getAllProjects() {
+        String query = "SELECT * FROM my_projects";
+        try(Connection conn = DB.sql2o.open()){
+            return conn.createQuery(query)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Project.class);
+        }
     }
 
     @Override
