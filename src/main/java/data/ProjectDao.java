@@ -26,7 +26,7 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public Project getProjectById(int id) {
-        String query = "SELECT * FROM my_projects WHERE id = :id";
+        String query = "SELECT * FROM projects WHERE id = :id";
         try(Connection conn = DB.sql2o.open()){
             return conn.createQuery(query)
                     .addParameter("id", id)
@@ -37,7 +37,7 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public List<Project> getProjectByType(String type) {
-        String query = "SELECT * FROM my_projects WHERE type = :type";
+        String query = "SELECT * FROM projects WHERE type = :type";
         try(Connection conn = DB.sql2o.open()){
             return conn.createQuery(query)
                     .addParameter("type", type)
@@ -49,7 +49,7 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public List<Project> getAllProjects() {
-        String query = "SELECT * FROM my_projects";
+        String query = "SELECT * FROM projects";
         try(Connection conn = DB.sql2o.open()){
             return conn.createQuery(query)
                     .throwOnMappingFailure(false)
@@ -59,7 +59,16 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void updateProject(int id, Project project) {
-
+        String query  = "UPDATE projects SET name = :name , type = :type, url = :url, link = :link WHERE id = :id";
+        try(Connection conn = DB.sql2o.open()){
+            conn.createQuery(query)
+                    .addParameter("name", project.getName())
+                    .addParameter("type", project.getType())
+                    .addParameter("url", project.getUrl())
+                    .addParameter("link", project.getLink())
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
     }
 
     @Override
