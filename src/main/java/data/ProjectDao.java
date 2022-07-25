@@ -26,7 +26,13 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public Project getProjectById(int id) {
-        return null;
+        String query = "SELECT * FROM my_projects WHERE id = :id";
+        try(Connection conn = DB.sql2o.open()){
+            return conn.createQuery(query)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(Project.class);
+        }
     }
 
     @Override
