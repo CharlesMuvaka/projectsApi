@@ -73,6 +73,12 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void deleteProject(int id) {
+        String query = "DELETE FROM projects WHERE id = :id";
+        try(Connection conn = DB.sql2o.open() ){
+            conn.createQuery(query)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
 
     }
 }
