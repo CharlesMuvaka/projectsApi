@@ -7,7 +7,7 @@ import java.util.List;
 public interface ProjectInterface {
 
     //CREATE
-    void addProject();
+    void addProject(Project project);
 
     //READ
     Project getProjectById(int id);
