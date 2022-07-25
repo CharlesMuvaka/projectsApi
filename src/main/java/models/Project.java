@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Project{
 
     private int id;
@@ -10,6 +12,19 @@ public class Project{
         this.type = type;
         this.url = url;
         this.link = link;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return Objects.equals(getName(), project.getName()) && Objects.equals(getType(), project.getType()) && Objects.equals(getUrl(), project.getUrl()) && Objects.equals(getLink(), project.getLink());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getType(), getUrl(), getLink());
     }
 
     public int getId() {
