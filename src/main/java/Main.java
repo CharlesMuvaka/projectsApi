@@ -89,6 +89,17 @@ public class Main {
            }
         });
 
+        //delete a project based on its id
+        delete("/deleteProject/:id", "application/json", (req, res)->{
+            int id = Integer.parseInt(req.params(":id"));
+            if(dao.getProjectById(id) == null){
+                return new ApiException(403, String.format("Project with the given id %s doesn't exist therefore cant be deleted", id));
+            }else{
+                dao.deleteProject(id);
+                return gson.toJson(dao.getAllProjects());
+            }
+        });
+
 
         exception(ApiException.class, (exc, req, res) -> {
             Map<String, Object> jsonMap = new HashMap<>();
