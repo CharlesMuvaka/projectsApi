@@ -23,7 +23,7 @@ public class Main {
         Gson gson = new Gson();
         ProjectDao dao = new ProjectDao();
 
-        
+        //add a project
         post("/project", "application/json",(req, res)->{
             Project project = gson.fromJson(res.body(), Project.class);
 
@@ -42,6 +42,15 @@ public class Main {
                 return gson.toJson(project);
             }
 
+        });
+
+        //get all projects
+        get("/projects", "application/json", (req,res)->{
+            if(dao.getAllProjects() != null){
+                return gson.toJson(dao.getAllProjects());
+            }else {
+                return new ApiException(402, "There are no available projects");
+            }
         });
 
 
