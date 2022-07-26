@@ -54,7 +54,7 @@ public class Main {
         });
 
         //get a project by id
-        get("/project:id", "application/json", (req, res)->{
+        get("/project/:id", "application/json", (req, res)->{
            int id = Integer.parseInt(req.params(":id"));
            Project project = dao.getProjectById(id);
 
@@ -64,6 +64,18 @@ public class Main {
                return  gson.toJson(project);
            }
         });
+
+        //get a project based on its type
+        get("/project/:type", "application/json", (req, res)->{
+            String type = req.params(":type");
+            if(dao.getProjectByType(type) == null){
+                return  new ApiException(401, String.format("Projects of type %s arent available", type));
+            }else{
+                return gson.toJson(dao.getProjectByType(type));
+            }
+        });
+
+
 
 
         exception(ApiException.class, (exc, req, res) -> {
