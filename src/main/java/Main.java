@@ -53,6 +53,18 @@ public class Main {
             }
         });
 
+        //get a project by id
+        get("/project:id", "application/json", (req, res)->{
+           int id = Integer.parseInt(req.params(":id"));
+           Project project = dao.getProjectById(id);
+
+           if (project == null){
+               return  new ApiException(403, String.format("The project with the given id %s doesn't exist", id));
+           }else{
+               return  gson.toJson(project);
+           }
+        });
+
 
         exception(ApiException.class, (exc, req, res) -> {
             Map<String, Object> jsonMap = new HashMap<>();
