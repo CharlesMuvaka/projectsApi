@@ -25,7 +25,7 @@ public class Main {
 
         //add a project
         post("/project", "application/json",(req, res)->{
-            Project project = gson.fromJson(res.body(), Project.class);
+            Project project = gson.fromJson(req.body(), Project.class);
 
             if(project.getName() == null){
                 return new ApiException(400, "Please enter the name of the project");
@@ -75,7 +75,19 @@ public class Main {
             }
         });
 
+        //update a project
+        patch("/updateProject/:id", "application/json", (req, res)->{
+           int id = Integer.parseInt(req.params(":id"));
+           Project project = gson.fromJson(req.body(), Project.class);
 
+           if(dao.getProjectById(id) == null){
+               return  new ApiException(402, String.format("Project with id %s doesn't exist thus can't be updated ", id));
+           }else{
+               project.setId(id);
+               dao.updateProject(id, project);
+               return gson.toJson(project);
+           }
+        });
 
 
         exception(ApiException.class, (exc, req, res) -> {
