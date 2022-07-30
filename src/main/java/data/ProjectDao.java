@@ -11,12 +11,17 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void addProject(Project project) {
-       String query = "INSERT INTO projects(name, type, url, link) VALUES(:name, :type, :url, :link)";
+       String query = "INSERT INTO projects(name, type, status, language_used, url1, url2, url3, created_at, link) VALUES(:name, :type, :status, :language_used, :url1, :url2, :url3, :created_at :link)";
        try(Connection conn = DB.sql2o.open()){
            int id = (int) conn.createQuery(query, true)
                    .addParameter("name", project.getName() )
                    .addParameter("type", project.getType() )
-                   .addParameter("url", project.getUrl() )
+                   .addParameter("status", project.getStatus() )
+                   .addParameter("language_used", project.getLanguage_used() )
+                   .addParameter("url1", project.getUrl1() )
+                   .addParameter("url2", project.getUrl2() )
+                   .addParameter("url3", project.getUrl3() )
+                   .addParameter("created_at", project.getCreated_at() )
                    .addParameter("link", project.getLink() )
                    .executeUpdate()
                    .getKey();
@@ -59,12 +64,17 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void updateProject(int id, Project project) {
-        String query  = "UPDATE projects SET name = :name , type = :type, url = :url, link = :link WHERE id = :id";
+        String query  = "UPDATE projects SET name = :name , type = :type, status = :status, language_used = :language_used, url1 = :url1, url2 = :url2, url3 = :url3, created_at = :created_at link = :link WHERE id = :id";
         try(Connection conn = DB.sql2o.open()){
             conn.createQuery(query)
                     .addParameter("name", project.getName())
                     .addParameter("type", project.getType())
-                    .addParameter("url", project.getUrl())
+                    .addParameter("status", project.getStatus())
+                    .addParameter("language_used", project.getLanguage_used())
+                    .addParameter("url1", project.getUrl1())
+                    .addParameter("url2", project.getUrl2())
+                    .addParameter("url3", project.getUrl3())
+                    .addParameter("created_at", project.getCreated_at())
                     .addParameter("link", project.getLink())
                     .addParameter("id", id)
                     .executeUpdate();
