@@ -31,7 +31,7 @@ public class Main {
                 return new ApiException(400, "Please enter the name of the project");
             }else if(project.getType() == null){
                 return new ApiException(401, "Please enter the type of the project");
-            }else if(project.getUrl() == null){
+            }else if(project.getUrl1() == null){
                 return new ApiException(402, "Please enter the image url of the project");
 
             }else if(project.getLink() == null){
