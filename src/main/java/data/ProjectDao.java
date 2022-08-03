@@ -11,7 +11,7 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void addProject(Project project) {
-       String query = "INSERT INTO projects(name, type, status, language_used, url1, url2, url3, created_at, link) VALUES(:name, :type, :status, :language_used, :url1, :url2, :url3, :created_at :link)";
+       String query = "INSERT INTO projects(name, type, status, language_used, url1, url2, url3, created_at, link) VALUES(:name, :type, :status, :language_used, :url1, :url2, :url3, :created_at, :link)";
        try(Connection conn = DB.sql2o.open()){
            int id = (int) conn.createQuery(query, true)
                    .addParameter("name", project.getName() )
