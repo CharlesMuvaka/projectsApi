@@ -64,7 +64,7 @@ public class ProjectDao implements ProjectInterface {
 
     @Override
     public void updateProject(int id, Project project) {
-        String query  = "UPDATE projects SET name = :name , type = :type, status = :status, language_used = :language_used, url1 = :url1, url2 = :url2, url3 = :url3, created_at = :created_at link = :link WHERE id = :id";
+        String query  = "UPDATE projects SET name = :name , type = :type, status = :status, language_used = :language_used, url1 = :url1, url2 = :url2, url3 = :url3, created_at = :created_at, link = :link WHERE id = :id";
         try(Connection conn = DB.sql2o.open()){
             conn.createQuery(query)
                     .addParameter("name", project.getName())
