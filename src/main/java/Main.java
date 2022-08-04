@@ -66,7 +66,7 @@ public class Main {
         });
 
         //get a project based on its type
-        get("/project/:type", "application/json", (req, res)->{
+        get("/projects/:type", "application/json", (req, res)->{
             String type = req.params(":type");
             if(dao.getProjectByType(type) == null){
                 return  new ApiException(401, String.format("Projects of type %s arent available", type));
