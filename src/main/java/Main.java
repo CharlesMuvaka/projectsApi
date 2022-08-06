@@ -114,7 +114,6 @@ public class Main {
             res.body(gson.toJson(jsonMap));  //set the output.
         });
 
-        after((req,res)-> res.type("application/json"));
 
     }
 }
