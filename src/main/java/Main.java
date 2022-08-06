@@ -2,6 +2,8 @@ import com.google.gson.Gson;
 import data.ProjectDao;
 import exceptions.ApiException;
 import models.Project;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +24,8 @@ public class Main {
 
         Gson gson = new Gson();
         ProjectDao dao = new ProjectDao();
+
+        get("/", (req, res)-> new ModelAndView(new HashMap<>(), "index.hbs"),new HandlebarsTemplateEngine());
 
         //add a project
         post("/project", "application/json",(req, res)->{
