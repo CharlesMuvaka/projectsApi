@@ -43,6 +43,7 @@ public class Main {
             }else{
                 dao.addProject(project);
                 res.status(201);
+                res.type("application/json");
                 return gson.toJson(project);
             }
 
@@ -51,6 +52,7 @@ public class Main {
         //get all projects
         get("/projects", "application/json", (req,res)->{
             if(dao.getAllProjects() != null){
+                res.type("application/json");
                 return gson.toJson(dao.getAllProjects());
             }else {
                 return new ApiException(402, "There are no available projects");
@@ -65,6 +67,7 @@ public class Main {
            if (project == null){
                return  new ApiException(403, String.format("The project with the given id %s doesn't exist", id));
            }else{
+               res.type("application/json");
                return  gson.toJson(project);
            }
         });
@@ -75,6 +78,7 @@ public class Main {
             if(dao.getProjectByType(type) == null){
                 return  new ApiException(401, String.format("Projects of type %s arent available", type));
             }else{
+                res.type("application/json");
                 return gson.toJson(dao.getProjectByType(type));
             }
         });
@@ -89,6 +93,7 @@ public class Main {
            }else{
                project.setId(id);
                dao.updateProject(id, project);
+               res.type("application/json");
                return gson.toJson(project);
            }
         });
@@ -100,6 +105,7 @@ public class Main {
                 return new ApiException(403, String.format("Project with the given id %s doesn't exist therefore cant be deleted", id));
             }else{
                 dao.deleteProject(id);
+                res.type("application/json");
                 return gson.toJson(dao.getAllProjects());
             }
         });
