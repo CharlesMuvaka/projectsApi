@@ -6,6 +6,7 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -25,7 +26,16 @@ public class Main {
         Gson gson = new Gson();
         ProjectDao dao = new ProjectDao();
 
+        //get the index page
         get("/", (req, res)-> new ModelAndView(new HashMap<>(), "index.hbs"),new HandlebarsTemplateEngine());
+
+        //get all template projects
+        get("/allProjects", (req,res)->{
+            Map<String, Object> templateData = new HashMap<>();
+            List<Project> allProjects = dao.getAllProjects();
+            templateData.put("projects", allProjects);
+            return new ModelAndView(templateData, "projects.hbs");
+        },new HandlebarsTemplateEngine());
 
         //add a project
         post("/project", "application/json",(req, res)->{
