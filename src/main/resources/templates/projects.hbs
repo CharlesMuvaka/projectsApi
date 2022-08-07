@@ -57,11 +57,12 @@
         </div>
     </div>
     <div class="row my-3 px-2">
+        {{#each projects}}
         <div class="col-sm-4 cont1 py-2">
-            <p class="yes text-center">Project Name</p>
-            <img src="./images/vibe1.png" class="projects" alt="">
-            <p class="yes text-center"> I am a young software engineer passionate in solving problems using technology. I am good in designing algorithms that can easily solve real world problems. This algorithms also can translate into very easy user friendly graphical interfaces while developing softwares.</p>
-            <p>Created at:</p>
+            <p class="yes text-center">{{name}}</p>
+            <img src={{url1}} class="projects" alt="">
+            <p class="yes text-center"> This is a {{status}} {{type}} written using {{language_used}}. To get more details about the project click on the button below</p>
+            <p>Created at:{{created_at}}</p>
             <div class="d-flex justify-content-between">
                 <div class="d-flex w-25 ">
                     <i class="fa-solid fa-thumbs-up"></i>
@@ -70,6 +71,7 @@
                 <button class="btn">View Repository</button>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
 {{/partial}}
