@@ -37,6 +37,17 @@ public class Main {
             return new ModelAndView(templateData, "projects.hbs");
         },new HandlebarsTemplateEngine());
 
+        //get individual template project
+        get("/singleProject/:id", (req,res)->{
+            Map<String, Object> templateData = new HashMap<>();
+            int id = Integer.parseInt(req.params(":id"));
+            Project project = dao.getProjectById(id);
+            templateData.put("projects", project);
+            return new ModelAndView(templateData, "project_details.hbs");
+        },new HandlebarsTemplateEngine());
+
+
+
         //add a project
         post("/project", "application/json",(req, res)->{
             Project project = gson.fromJson(req.body(), Project.class);
