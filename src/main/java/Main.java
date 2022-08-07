@@ -47,7 +47,7 @@ public class Main {
         },new HandlebarsTemplateEngine());
 
         //get android projects
-        get("/singleProject/:id", (req,res)->{
+        get("/android", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
             String type = "Android-Application";
             List<Project> androidProjects = dao.getProjectByType(type);
@@ -56,9 +56,18 @@ public class Main {
         },new HandlebarsTemplateEngine());
 
         //get web application projects
-        get("/singleProject/:id", (req,res)->{
+        get("/web", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
             String type = "Web-Application";
+            List<Project> androidProjects = dao.getProjectByType(type);
+            templateData.put("projects", androidProjects );
+            return new ModelAndView(templateData, "android.hbs");
+        },new HandlebarsTemplateEngine());
+
+        //get api projects
+        get("/api", (req,res)->{
+            Map<String, Object> templateData = new HashMap<>();
+            String type = "Api";
             List<Project> androidProjects = dao.getProjectByType(type);
             templateData.put("projects", androidProjects );
             return new ModelAndView(templateData, "android.hbs");
