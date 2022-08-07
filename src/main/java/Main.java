@@ -55,6 +55,15 @@ public class Main {
             return new ModelAndView(templateData, "android.hbs");
         },new HandlebarsTemplateEngine());
 
+        //get web application projects
+        get("/singleProject/:id", (req,res)->{
+            Map<String, Object> templateData = new HashMap<>();
+            String type = "Web-Application";
+            List<Project> androidProjects = dao.getProjectByType(type);
+            templateData.put("projects", androidProjects );
+            return new ModelAndView(templateData, "android.hbs");
+        },new HandlebarsTemplateEngine());
+
         //add a project
         post("/project", "application/json",(req, res)->{
             Project project = gson.fromJson(req.body(), Project.class);
