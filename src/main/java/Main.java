@@ -5,6 +5,7 @@ import models.Project;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,15 @@ public class Main {
         get("/allProjects", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
             List<Project> allProjects = dao.getAllProjects();
-            templateData.put("projects", allProjects);
+            List<Project> newProjects = new ArrayList<>();
+
+            for (Project project: allProjects) {
+                Project newProject = new Project(project.getName(), project.getType(), project.getStatus().substring(0, 155), project.getLanguage_used(), project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+                newProject.setId(project.getId());
+                newProjects.add(newProject);
+
+            }
+            templateData.put("projects", newProjects);
             return new ModelAndView(templateData, "projects.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -42,7 +51,22 @@ public class Main {
             Map<String, Object> templateData = new HashMap<>();
             int id = Integer.parseInt(req.params(":id"));
             Project project = dao.getProjectById(id);
-            templateData.put("projects", project);
+
+            String projectIndexPageDescription = project.getStatus().substring(0, 150);
+            String projectInformation = project.getStatus().substring(150, 400);
+            String projectContinuation = project.getStatus().substring(400);
+
+            Project projectWithIndexDescription = new Project(project.getName(), project.getType(), projectIndexPageDescription, project.getLanguage_used(),project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+            Project projectWithProjectInformation = new Project(project.getName(), project.getType(), projectInformation, project.getLanguage_used(),project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+            Project projectWithProjectContinuation = new Project(project.getName(), project.getType(), projectContinuation, project.getLanguage_used(),project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+
+
+
+            templateData.put("project1", projectWithIndexDescription);
+            templateData.put("project2", projectWithProjectInformation);
+            templateData.put("project3", projectWithProjectContinuation);
+            templateData.put("project", project);
+
             return new ModelAndView(templateData, "project_details.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -51,7 +75,15 @@ public class Main {
             Map<String, Object> templateData = new HashMap<>();
             String type = "Android-Application";
             List<Project> androidProjects = dao.getProjectByType(type);
-            templateData.put("projects", androidProjects );
+            List<Project> newProjects = new ArrayList<>();
+
+            for (Project project: androidProjects) {
+                Project newProject = new Project(project.getName(), project.getType(), project.getStatus().substring(0, 155), project.getLanguage_used(), project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+                newProject.setId(project.getId());
+                newProjects.add(newProject);
+
+            }
+            templateData.put("projects", newProjects);
             return new ModelAndView(templateData, "android.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -59,18 +91,35 @@ public class Main {
         get("/web", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
             String type = "Web-Application";
-            List<Project> androidProjects = dao.getProjectByType(type);
-            templateData.put("projects", androidProjects );
-            return new ModelAndView(templateData, "android.hbs");
+            List<Project> webProjects = dao.getProjectByType(type);
+
+            List<Project> newProjects = new ArrayList<>();
+
+            for (Project project: webProjects) {
+                Project newProject = new Project(project.getName(), project.getType(), project.getStatus().substring(0, 155), project.getLanguage_used(), project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+                newProject.setId(project.getId());
+                newProjects.add(newProject);
+
+            }
+            templateData.put("projects", newProjects);
+            return new ModelAndView(templateData, "web.hbs");
         },new HandlebarsTemplateEngine());
 
         //get api projects
         get("/api", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
             String type = "Api";
-            List<Project> androidProjects = dao.getProjectByType(type);
-            templateData.put("projects", androidProjects );
-            return new ModelAndView(templateData, "android.hbs");
+            List<Project> apiProjects = dao.getProjectByType(type);
+            List<Project> newProjects = new ArrayList<>();
+
+            for (Project project: apiProjects) {
+                Project newProject = new Project(project.getName(), project.getType(), project.getStatus().substring(0, 155), project.getLanguage_used(), project.getUrl1(), project.getUrl2(), project.getUrl3(), project.getCreated_at(), project.getLink());
+                newProject.setId(project.getId());
+                newProjects.add(newProject);
+
+            }
+            templateData.put("projects", newProjects);
+            return new ModelAndView(templateData, "api.hbs");
         },new HandlebarsTemplateEngine());
 
         //add a project
