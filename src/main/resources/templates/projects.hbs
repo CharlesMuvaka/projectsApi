@@ -3,50 +3,25 @@
     <div class="row">
         <div class="col-sm-6">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="./images/vibe1.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./images/vibe3.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./images/pata1.png" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
 
         </div>
 
         <div class="col-sm-5 d-flex flex-column justify-content-center">
-            <h5 class="text-center ">WELCOME!</h5>
+            <h5 class="text-center ">Personal Projects!</h5>
             <!-- <h5 class="">I Am a Software Engineer</h5> -->
-            <p class="yes text-justify"> I am a young software engineer passionate in solving problems using technology. I am good in designing algorithms that can easily solve real world problems. This algorithms also can translate into very easy user friendly graphical interfaces while developing softwares.</p>
+            <p class="yes text-justify"> Software engineering requires analyzing user requirements and then designing, building, and testing software application which will satisfy that requirements. The characteristics of any software product include features which are displayed by the product when it is installed and put in use. Any software should be judged by what it offers and what are the methods which help you to use it.</p>
             <p class="align-self-center d-flex justify-content-around" style="width:50% ;">
                 <i class="fa-brands fa-linkedin"></i>
                 <i class="fa-brands fa-facebook"></i>
@@ -56,20 +31,24 @@
             </p>
         </div>
     </div>
-    <div class="row my-3 px-2">
+    <div class="row p-1 justify-content-evenly mt-2">
         {{#each projects}}
-        <div class="col-sm-4 cont1 py-2">
-            <p class="yes text-center">{{name}}</p>
-            <img src={{url1}} class="projects" alt="">
-            <p class="yes text-center"> This is a {{status}} {{type}} written using {{language_used}}. To get more details about the project click on the button below</p>
-            <p>Created at:{{created_at}}</p>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex w-25 ">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                    <i class="fa-solid fa-thumbs-down"></i>
-                </div>
-                <button class="btn">View Repository</button>
-            </div>
+            <div class="col-sm-4">
+            <a href="/singleProject/{{id}}">
+                    <div class="cont1 m-2 p-1">
+                        <h5 class="yes text-center">{{name}}</h5>
+                        <img src={{url1}} class="projects" alt="">
+                        <p class="yes text-center">{{status}} ..To get more details about the project click on the button below</p>
+                        <p>Created at:{{created_at}}</p>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex w-25 ">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
+                            <button class="btn">View Repository</button>
+                        </div>
+                    </div>
+            </a>
         </div>
         {{/each}}
     </div>
