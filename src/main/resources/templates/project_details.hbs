@@ -1,47 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="https://kit.fontawesome.com/4e03be8471.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-sm navbar-dark">
-    <a class="navbar-brand ms-4 d-flex align-items-center">
-        <!-- <img src="./images/portfolio.jpeg" alt=""> -->
-        <div class="five"></div>
-        <p>MUVAKA!</p>
-    </a>
-    <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#yes" aria-label="toggle navigation" aria-expanded="false">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class=" collapse navbar-collapse me-5" id="yes">
-        <ul class="navbar-nav ms-auto me-5">
-            <li><a class="nav-link  p2 px-3">Home</a></li>
-            <li><a class="nav-link  p2 px-3">Applications</a></li>
-            <li><a class="nav-link  p2 px-3">Web pages</a></li>
-            <li><a class="nav-link  p2 px-3">Contacts</a></li>
-        </ul>
-    </div>
-</nav>
-
+{{#partial "content"}}
 <div class="container-fluid text-white">
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="ten"></div>
+    <div class="row justify-content-around">
+
+        <h4 class="text-center my-4">Welcome to {{project.name}}</h4>
+
+        <div class="col-sm-3 d-flex align-items-center justify-content-center">
+            <img style="height:auto; width:98%; border-radius: 5px;" src={{project.url1}}>
+<!--            <div class="ten"></div>-->
         </div>
+        <div class="col-sm-7">
+
+            <div class="w-100">
+<!--                <div class="w-75 me-5">-->
+<!--                    -->
+<!--                </div>-->
+                <p class="text-center mt-3">Project Description</p>
+                <p>{{project.status}}</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-2 ">
+            <p class="text-center mt-3">Project Details</p>
+            <div class="w-100 d-flex flex-column align-items-start justify-content-start mt-4" style="height: 90%;">
+                <p>Project-Type: <span>{{project.type}}</span> </p>
+                <p>Languages-used: <span>{{project.language_used}}</span> </p>
+                <p>Created-at: <span>{{project.created_at}}</span> </p>
+            </div>
+        </div>
+        <marquee behavior="" direction="">Click on the icon below to view the projects full repository.</marquee>
+        <p class="text-center mt-3">
+            <i class="fa-brands fa-github" style="font-size: 25px;"></i>
+        </p>
+
     </div>
-    <div class="row justify-content-center align-items-center cont1 mx-5 my-3">
-        <h3 class="text-center mt-2">The ultimate programming experince</h3>
+    <div class="row justify-content-center align-items-center cont1 my-3">
+        <h5 class="text-center mt-2">{{project.name}} Objectives</h5>
         <div class="col-sm-3 main2 my-2">
-            <p class="my-2" style="font-size: 15px;">Object-Orinted Programming</p>
-            <img src="./images/getBusy.jpg" alt="">
-            <p>Java staticity and stability makes it favourable to rely on, its syntax has been reciplicated by various functional languages therefore knowledge in java makes it easy to understand other languages. </p>
+            <p class="my-2" style="font-size: 15px;">{{project.name}} information</p>
+            <img src={{project.url2}} alt={{project.name}}>
+            <p>{{project1.status}} </p>
             <div class="rate d-flex my-2">
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
@@ -52,10 +51,9 @@
 
         </div>
         <div class="col-sm-3 main2 my-2">
-            <p class="my-2" style="font-size: 15px;">Database Management</p>
-            <img src="./images/property.jpg" alt="">
-            <p>There has been a threat to relational databases with the rise of Googles real time non-relational database, firebase.</p>
-            <p>Although in a huge data set that is relational, sql has always been the best option. PostgreSql on the other hand is a good Database management system that can easily read, write and update sql databases.</p>
+            <p class="my-2" style="font-size: 15px;">Index page</p>
+            <img src={{project.url1}} alt={{project.name}}>
+            <p>{{project2.status}}</p>
             <div class="rate d-flex my-2">
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
@@ -65,9 +63,9 @@
             </div>
         </div>
         <div class="col-sm-3 main2 my-2">
-            <p class="my-2" style="font-size: 15px;">Functional Programming</p>
-            <img src="./images/getBusy.jpg" alt="">
-            <p>The strictness of type script makes it the safest functional language to use. This strictness helps in reducing run time errors that might occur due to different data types reference.</p>
+            <p class="my-2" style="font-size: 15px;">About</p>
+            <img src={{project.url3}} alt={{project.name}}>
+            <p>{{project3.status}}</p>
             <div class="rate d-flex my-2">
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
@@ -78,12 +76,5 @@
         </div>
     </div>
 </div>
-
-
-<script src="./js/jquery-3.6.0.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/popper-2.11.2.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="./js/script1.js"></script>
-</body>
-</html>
+{{/partial}}
+{{>layout.hbs}}
