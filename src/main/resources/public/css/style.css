@@ -124,6 +124,12 @@ i{
     width: 98%;
 
 }
+.cont1:hover{
+        transform:translate(0px, -20px);
+        width: 90%;
+        height: 80%;
+        opacity: 0.8;
+}
 .main2 img{
     width: 98%;
     border-radius: 5px;
