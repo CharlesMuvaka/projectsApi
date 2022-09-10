@@ -6,7 +6,9 @@ p{
     font-size: 15px;
 }
 nav{
-    background-color: rgba(55, 53, 90, 0.1);
+    height: 60px;
+    background-color: rgb(19, 15, 92);
+    border-radius: 5px;
 
 }
 
@@ -60,10 +62,10 @@ i{
     opacity: 0.2;
 }
 .two{
-    background-position: center;
+    background-position:left bottom;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("../images/IMG_4635.jpg");
+    background-image: url("../images/muvaka.jpg");
     border-radius: 10px;
     width: 100%;
     height: 300px;
@@ -124,7 +126,7 @@ i{
     width: 98%;
 
 }
-.cont1:hover{
+.cont1:hover, .teamwork:hover{
         transform:translate(0px, -20px);
         width: 90%;
         height: 80%;
@@ -154,4 +156,125 @@ i{
 }
 .col-sm-4 a{
     text-decoration: none;
+}
+
+/* Resume Styling */
+
+.resume{
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+    background-image: url("../images/CuriculumVitae.png");
+    box-shadow: -3px 3px 2px rgb(55, 53, 90);
+    border-radius: 10px;
+
+}
+
+#soft1{
+    border-radius: 5px 5px 0px 0px;
+}
+
+#soft2{
+    border-radius: 0px 0px 5px 5px;
+}
+
+
+.soft{
+    background-color: rgb(51, 51, 90);
+}
+
+.soft p{
+    font-size: 11px;
+    color: rgb(197, 192, 212);
+
+}
+.teamwork{
+    width: 33%;
+    text-align: justify;
+    background-color: rgb(14,12,56);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px;
+}
+
+#team{
+    box-shadow: -2px -2px 1px grey;
+}
+
+#team1{
+    box-shadow: -2px 2px 1px grey;
+}
+
+#team2{
+    box-shadow: -2px 2px 1px grey;
+}
+
+.teamwork img{
+    width: 98%;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.emphathy{
+    background-color: rgb(14,12,56);
+    width: 98%;
+    border-radius: 5px;
+
+}
+.emphathy img{
+    height: 150px;
+    border-radius: 5px 0px 0px 5px;
+    float: left;
+}
+
+.leadership{
+    background-color: rgb(14,12,56);
+    width: 98%;
+    border-radius: 5px;
+}
+
+.leadership img{
+    float: right;
+    border-radius: 5px;
+}
+
+.depresed{
+    background-color: rgb(51, 51, 90);
+    border-radius: 5px;
+    box-shadow: 2px -2px 1px grey;
+
+}
+.depresed img{
+    height: 120px;
+    float: left;
+    border-radius: 5px 0px 0px 5px;
+
+}
+
+.depresed p{
+    font-size: 12px;
+    color: rgb(197, 192, 212);
+}
+
+.disclaimer{
+    background-color: rgb(51, 51, 90);
+    border-radius: 5px;
+    box-shadow: -2px 2px 1px grey;
+
+}
+
+.disclaimer img{
+    float: right;
+    height: 140px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.disclaimer p{
+    font-size: 12px;
+    color: rgb(197, 192, 212);
+}
+.yas{
+    color: blue;
 }
