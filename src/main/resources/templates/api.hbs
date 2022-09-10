@@ -26,28 +26,27 @@
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-solid fa-envelope"></i>
                     <i class="fa-brands fa-github"></i>
-                    <i class="fa-brands fa-github"></i>
                 </p>
             </div>
         </div>
         <div class="row p-1 justify-content-evenly mt-2">
             {{#each projects}}
                 <div class="col-sm-4 ">
-                    <div class="cont1 m-2 p-1">
-                        <a href="/singleProject/{{id}}">
+                    <a href="/singleProject/{{id}}">
+                        <div class="cont1 m-2 p-1">
                             <h5 class="yes text-center">{{name}}</h5>
                             <img src={{url1}} class="projects" alt="">
                             <p class="yes text-center">{{status}}  To get more details about the project click on the button below</p>
                             <p>Created at:{{created_at}}</p>
-                        </a>
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex w-25 ">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex w-25 ">
                                 <i class="fa-solid fa-thumbs-up"></i>
                                 <i class="fa-solid fa-thumbs-down"></i>
+                                </div>
+                            <button class="btn">View Project</button>
                             </div>
-                            <a href={{link}} target="_blank"><button class="btn">View Repository</button></a>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {{/each}}
         </div>
