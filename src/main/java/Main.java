@@ -30,6 +30,9 @@ public class Main {
         //get the index page
         get("/", (req, res)-> new ModelAndView(new HashMap<>(), "index.hbs"),new HandlebarsTemplateEngine());
 
+        //get the resume page
+        get("/resume", (req, res)-> new ModelAndView(new HashMap<>(), "resume.hbs"),new HandlebarsTemplateEngine());
+
         //get all template projects
         get("/allProjects", (req,res)->{
             Map<String, Object> templateData = new HashMap<>();
